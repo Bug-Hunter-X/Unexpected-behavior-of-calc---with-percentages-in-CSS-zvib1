@@ -1,0 +1,21 @@
+One way to solve this issue is to ensure that the parent element's dimensions are defined before the child element's width is calculated using `calc()`. This can be achieved in several ways:
+
+1. **Explicitly Setting Parent Dimensions:** If you know the size of the parent container, set its width and height explicitly. Then the calculation with the percentage in `calc()` will work as expected.
+
+2. **Using viewport units:** Instead of percentages, consider using viewport units (vw, vh) to define the width of the element.  This will calculate the width based on the viewport size rather than a parent element's size.
+
+3. **JavaScript:** In more complex cases, you can use Javascript to ensure that the calculation happens after the parent container is fully rendered.  This method allows the width to be calculated based on the actual parent's width.
+
+**Example using explicit parent dimensions:**
+
+```css
+/* bugSolution.css */
+.container {
+  width: 500px; /* Explicitly set width */
+}
+
+.inner {
+  width: calc(50% - 10px);
+}
+```
+By explicitly defining the container's width, the calculation `calc(50% - 10px)` will be accurate.
